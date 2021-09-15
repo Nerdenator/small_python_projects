@@ -32,7 +32,7 @@ def generate_birthdays():
                 dupes = list(duplicates(birthday_list_item))
                 if len(dupes) != 0:
                     duplicate_birthday_counter += 1
-                percentage = (duplicate_birthday_counter / 100000) * 100
+            percentage = (duplicate_birthday_counter / 100000) * 100
             print(f"Out of 100,000 simulations of {birthday_count} people, there was a matching birthday in that group "
                   f"{duplicate_birthday_counter} times. This means that {birthday_count} people have"
                   f" a {percentage} % chance of"
