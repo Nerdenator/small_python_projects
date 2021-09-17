@@ -1,6 +1,3 @@
-symbols = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-
-
 def main_menu():
     encrypt_decrypt = input("Do you want to (e)ncrypt or (d)ecrypt? > ").lower()
     if encrypt_decrypt.startswith('e'):
@@ -14,7 +11,7 @@ def main_menu():
 
 def get_key(operation):
     key = input("Please enter the key (0-25) to use. > ")
-    if int(key) > 25 or int(key) < 0 or key.isnumeric() == False or key == '':
+    if key.isnumeric() is False or key == '' or int(key) > 25 or int(key) < 0:
         print("Invalid key selection")
         get_key(operation)
     if operation == 'e':
@@ -24,6 +21,7 @@ def get_key(operation):
 
 
 def encrypt(key):
+    key = int(key)
     message = input("Please enter the message to encrypt. > ")
     if message == "":
         print("Invalid input. Please enter a valid string of characters.")
@@ -39,12 +37,29 @@ def encrypt(key):
                 char_before = ord(char)
                 char_after = char_before + key
                 result_buffer.append(chr(char_after))
+        print("".join(result_buffer))
+        main_menu()
 
 
 def decrypt(key):
+    key = int(key)
     message = input("Please enter the message to decrypt. > ")
     if message == "":
         print("Invalid input. Please enter a valid string of characters.")
         decrypt(key)
     else:
-        pass
+        message_upper = message.upper()
+        result_buffer = []
+        for char in message_upper:
+            if ord(char) == 32 or ord(char) in range(0, 64) or ord(char) in range(91, 96) or ord(char) in range(123,
+                                                                                                                127):
+                result_buffer.append(char)
+            else:
+                char_before = ord(char)
+                char_after = char_before - key
+                result_buffer.append(chr(char_after))
+        print("".join(result_buffer))
+        main_menu()
+
+
+main_menu()
