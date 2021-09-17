@@ -125,7 +125,6 @@ def main():
         bext.goto(5, 0)
         bext.fg('white')
         print('Corner bounces:', cornerBounces, end='')
-
         for logo in logos:
             # Draw the logos at their new location:
             bext.goto(logo[X], logo[Y])
