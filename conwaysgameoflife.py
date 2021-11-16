@@ -1,9 +1,9 @@
 import copy, random, sys, time
 
 WIDTH = 79  # The width of the cell grid.
-HEIGHT = 20     # The height of the cell grid.
+HEIGHT = 20  # The height of the cell grid.
 
-ALIVE = 'O'     # The character representing a living cell.
+ALIVE = 'O'  # The character representing a living cell.
 DEAD = ' '  # The character representing a dead cell.
 
 # The cells and nextCells are dictionaries for the state of the game
@@ -12,11 +12,11 @@ nextCells = {}
 
 # Put random dead and alive cells into nextCells:
 for x in range(WIDTH):  # loop over every possible column.
-    for y in range(HEIGHT):     # loop over every possible row
-        if random.randint(0, 1) == 0:   # 50/50 chance for starting cells being alive or dead.
-            nextCells[(x, y)] = ALIVE   # Add a living cell
+    for y in range(HEIGHT):  # loop over every possible row
+        if random.randint(0, 1) == 0:  # 50/50 chance for starting cells being alive or dead.
+            nextCells[(x, y)] = ALIVE  # Add a living cell
         else:
-            nextCells[(x, y)] = DEAD    # Add a dead cell
+            nextCells[(x, y)] = DEAD  # Add a dead cell
 while True:
     # Each iteration of this loop is a step of the simulation
     print('\n' * 50)
@@ -66,7 +66,7 @@ while True:
                 # everything else dies or stays dead:
                 nextCells[(x, y)] = DEAD
     try:
-        time.sleep(1) # Add a one second pause to reduce flickering
+        time.sleep(1)  # Add a one second pause to reduce flickering
     except KeyboardInterrupt:
         print("Conway's Game of Life")
         sys.exit()
